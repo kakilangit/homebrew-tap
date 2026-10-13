@@ -1,0 +1,28 @@
+# Checks every cask on pull requests to main and pushes to main: style, audit
+# (including the download and checksum), and a real install and uninstall.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Check casks
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: make ci
+        env:
+          # Authenticated GitHub API calls for `brew audit --online`; shared runner IPs
+          # quickly hit the unauthenticated rate limit.
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
