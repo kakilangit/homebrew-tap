@@ -22,3 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: make ci
+        env:
+          # Authenticated GitHub API calls for `brew audit --online`; shared runner IPs
+          # quickly hit the unauthenticated rate limit.
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
