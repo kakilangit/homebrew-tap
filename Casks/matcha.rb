@@ -12,6 +12,8 @@ cask "matcha" do
     strategy :github_latest
   end
 
+  depends_on :macos
+
   app "Matcha.app"
 
   # Matcha is not notarized yet, so Gatekeeper would block the first launch.
