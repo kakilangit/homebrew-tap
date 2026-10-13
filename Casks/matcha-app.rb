@@ -1,4 +1,4 @@
-cask "matcha" do
+cask "matcha-app" do
   version "0.1.0"
   sha256 "d9b4c90843dd596912cd5ab634575baf5f0e71d5f1450700b5e6f39988f580f2"
 
