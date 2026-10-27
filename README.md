@@ -6,13 +6,14 @@ Homebrew casks for apps by [kakilangit](https://github.com/kakilangit).
 
 ```sh
 brew install --cask kakilangit/tap/matcha-app
+brew install --cask kakilangit/tap/shokirei
 ```
 
 Or tap once, then install by name:
 
 ```sh
 brew tap kakilangit/tap
-brew install --cask matcha-app
+brew install --cask matcha-app shokirei
 ```
 
 ## Casks
@@ -20,22 +21,26 @@ brew install --cask matcha-app
 | Cask         | App |
 | ------------ | --- |
 | `matcha-app` | [Matcha](https://github.com/kakilangit/matcha), a regular expression workbench |
+| `shokirei`   | [Shokirei](https://github.com/kakilangit/shokirei), a screenshot beautifier |
 
 ## Notes
 
-The cask is named `matcha-app` because Homebrew already has an unrelated `matcha` formula.
+The Matcha cask is named `matcha-app` because Homebrew already has an unrelated `matcha` formula.
 
+Matcha and Shokirei are not notarized by Apple yet. Their casks clear the macOS quarantine
+flag after installing, so the apps open without a Gatekeeper prompt. `brew uninstall --zap`
+also removes what they keep: Matcha's saved pattern library, and Shokirei's saved styles,
+settings, and recent screenshots.
 
-Matcha is not notarized by Apple yet. Its cask clears the macOS quarantine flag after
-installing, so the app opens without a Gatekeeper prompt. `brew uninstall --zap matcha-app`
-also removes its saved pattern library.
-
-If macOS still says Matcha can't be opened (for example, after installing it from the
+If macOS still says an app can't be opened (for example, after installing it from the
 `.dmg` instead of Homebrew), clear the quarantine flag yourself:
 
 ```sh
 xattr -cr /Applications/Matcha.app
+xattr -cr /Applications/Shokirei.app
 ```
+
+Shokirei asks for the Screen Recording permission the first time it captures.
 
 ## Development
 
