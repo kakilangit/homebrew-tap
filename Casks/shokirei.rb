@@ -1,6 +1,6 @@
 cask "shokirei" do
-  version "0.1.0"
-  sha256 "734dc83a9b655fe3758725847350c603d68dd6bfaec659ded35a3aeba61338fa"
+  version "0.2.0"
+  sha256 "230f04b9818f4c7401b666c2c1a1fa8b4b2fd44fc105c0c0f1e342ff46c4a1d6"
 
   url "https://github.com/kakilangit/shokirei/releases/download/v#{version}/Shokirei-#{version}-universal.dmg"
   name "Shokirei"
