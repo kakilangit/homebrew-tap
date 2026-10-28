@@ -1,0 +1,39 @@
+# Matcha's Flatpak, built from a release tag of https://github.com/kakilangit/matcha.
+# `make flatpak-update APP=dev.kakilangit.matcha TAG=vX.Y.Z` pins the tag and its commit and
+# regenerates cargo-sources.json; Flathub's repo for the app gets the same two files.
+id: dev.kakilangit.matcha
+runtime: org.freedesktop.Platform
+runtime-version: "26.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: matcha
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+modules:
+  - name: matcha
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin
+      env:
+        CARGO_HOME: /run/build/matcha/cargo
+        CARGO_NET_OFFLINE: "true"
+    build-commands:
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --release --locked
+      - install -Dm755 target/release/matcha ${FLATPAK_DEST}/bin/matcha
+      - install -Dm644 assets/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 assets/${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - for size in 16 32 48 64 128 256 512; do
+          install -Dm644 assets/icons/matcha-${size}.png
+            ${FLATPAK_DEST}/share/icons/hicolor/${size}x${size}/apps/${FLATPAK_ID}.png;
+        done
+    sources:
+      - type: git
+        url: https://github.com/kakilangit/matcha.git
+        tag: v0.1.4
+        commit: 284ab55a6833b5c87af126e0cbbc8f2ca965ef06
+      - cargo-sources.json

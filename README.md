@@ -1,6 +1,7 @@
 # kakilangit/homebrew-tap
 
-Homebrew casks for apps by [kakilangit](https://github.com/kakilangit).
+Packages for apps by [kakilangit](https://github.com/kakilangit): Homebrew casks for macOS, and,
+for Linux, a Flatpak manifest. The apps' code lives in their own repos.
 
 ## Install
 
@@ -42,9 +43,18 @@ xattr -cr /Applications/Shokirei.app
 
 Shokirei asks for the Screen Recording permission the first time it captures.
 
+## Linux
+
+[`flatpak/dev.kakilangit.matcha`](flatpak/dev.kakilangit.matcha) is Matcha's Flatpak manifest for
+[Flathub](https://flathub.org). It builds a release tag of Matcha, pinned to its commit, with the
+crates vendored in `cargo-sources.json`, since Flatpak builds have no network.
+
 ## Development
 
 ```sh
-make lint   # cask style
-make ci     # style, audit, and a real install/uninstall of every cask (macOS)
+make lint                         # cask style
+make ci                           # style, audit, and a real install/uninstall of every cask (macOS)
+make flatpak-update TAG=v0.1.4    # point the Flatpak at a release and refresh its crates
+make flatpak                      # build and install the Flatpak (Linux)
+make flatpak-lint                 # lint it as Flathub does (Linux)
 ```
