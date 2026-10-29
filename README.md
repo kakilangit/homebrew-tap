@@ -40,7 +40,10 @@ xattr -cr /Applications/Matcha.app
 xattr -cr /Applications/Shokirei.app
 ```
 
-Shokirei asks for the Screen Recording permission the first time it captures.
+Shokirei asks for the Screen Recording permission the first time it captures. From 0.3.1,
+updates keep it, because every release is signed with the same certificate. Coming from 0.3.0
+or earlier, grant it once more; if captures still fail, remove the old Shokirei entry in
+System Settings → Privacy & Security → Screen Recording first.
 
 ## Development
 
