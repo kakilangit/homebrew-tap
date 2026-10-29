@@ -40,10 +40,12 @@ xattr -cr /Applications/Matcha.app
 xattr -cr /Applications/Shokirei.app
 ```
 
-Shokirei asks for the Screen Recording permission the first time it captures. From 0.3.1,
-updates keep it, because every release is signed with the same certificate. Coming from 0.3.0
-or earlier, grant it once more; if captures still fail, remove the old Shokirei entry in
-System Settings → Privacy & Security → Screen Recording first.
+Every release of Matcha (from 0.1.5) and Shokirei (from 0.3.1) is signed with the same
+certificate, so macOS recognizes an update as the same app and keeps what it allowed it.
+
+Shokirei asks for the Screen Recording permission the first time it captures, and updates keep
+it. Coming from 0.3.0 or earlier, grant it once more; if captures still fail, remove the old
+Shokirei entry in System Settings → Privacy & Security → Screen Recording first.
 
 ## Development
 
