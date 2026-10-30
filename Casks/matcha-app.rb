@@ -1,6 +1,6 @@
 cask "matcha-app" do
-  version "0.1.5"
-  sha256 "840efd1c1d8e4385c0671cd02eeb6d481519478ec3979e28812c063a0fc618e9"
+  version "0.1.6"
+  sha256 "6a0cab9c1891374e3aeaa8456d5d714a18955b626b0029e5ef7d9a09e55b615c"
 
   url "https://github.com/kakilangit/matcha/releases/download/v#{version}/Matcha-#{version}-universal.dmg"
   name "Matcha"
