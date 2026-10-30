@@ -16,10 +16,12 @@ export HOMEBREW_NO_INSTALL_FROM_API := 1
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*## "} /^[a-z-]+:.*## / {printf "  %-8s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-setup: ## Point the kakilangit/tap tap at this checkout
+setup: ## Point the kakilangit/tap tap at this checkout, and trust it
 	mkdir -p "$(dir $(TAP_DIR))"
 	rm -rf "$(TAP_DIR)"
 	ln -s "$(CURDIR)" "$(TAP_DIR)"
+	@# Homebrew 7 refuses to load casks from a tap that isn't trusted; older ones lack `trust`.
+	if $(BREW) trust --help >/dev/null 2>&1; then $(BREW) trust $(TAP); fi
 
 lint: setup ## Check cask style
 	$(BREW) style --cask $(addprefix $(TAP)/,$(CASKS))
