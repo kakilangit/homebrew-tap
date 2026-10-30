@@ -9,12 +9,16 @@ brew install --cask kakilangit/tap/matcha-app
 brew install --cask kakilangit/tap/shokirei
 ```
 
-Or tap once, then install by name:
+Or tap and trust it once, then install by name:
 
 ```sh
 brew tap kakilangit/tap
+brew trust kakilangit/tap
 brew install --cask matcha-app shokirei
 ```
+
+Homebrew only loads casks from taps you trust; installing by the full name, as above, trusts that
+cask. If `brew upgrade` says `kakilangit/tap` is untrusted, run `brew trust kakilangit/tap` once.
 
 ## Casks
 
