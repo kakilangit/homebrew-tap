@@ -22,6 +22,9 @@ cask "matcha-app" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Matcha.app"]
   end
 
+  # Quits the app before an upgrade or uninstall; `brew upgrade` reopens it afterwards.
+  uninstall quit: "dev.kakilangit.matcha"
+
   zap trash: "~/Library/Application Support/Matcha"
 
   caveats <<~EOS
