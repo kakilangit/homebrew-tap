@@ -22,6 +22,9 @@ cask "shokirei" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Shokirei.app"]
   end
 
+  # Quits the app before an upgrade or uninstall; `brew upgrade` reopens it afterwards.
+  uninstall quit: "dev.kakilangit.shokirei"
+
   zap trash: "~/Library/Application Support/Shokirei"
 
   caveats <<~EOS
