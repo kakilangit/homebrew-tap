@@ -1,7 +1,6 @@
 cask "takara" do
   version "0.1.0"
-  # Replaced with the DMG's sha256 when the first release is published.
-  sha256 :no_check
+  sha256 "423dc8b5024c8d6e8a761903586827330fa33b50738534448248add678e4a1ec"
 
   url "https://github.com/kakilangit/takara/releases/download/v#{version}/Takara-#{version}-universal.dmg"
   name "Takara"
