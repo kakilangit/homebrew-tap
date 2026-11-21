@@ -7,6 +7,7 @@ Homebrew casks for apps by [kakilangit](https://github.com/kakilangit).
 ```sh
 brew install --cask kakilangit/tap/matcha-app
 brew install --cask kakilangit/tap/shokirei
+brew install --cask kakilangit/tap/takara
 ```
 
 Or tap and trust it once, then install by name:
@@ -14,7 +15,7 @@ Or tap and trust it once, then install by name:
 ```sh
 brew tap kakilangit/tap
 brew trust kakilangit/tap
-brew install --cask matcha-app shokirei
+brew install --cask matcha-app shokirei takara
 ```
 
 Homebrew only loads casks from taps you trust; installing by the full name, as above, trusts that
@@ -26,15 +27,17 @@ cask. If `brew upgrade` says `kakilangit/tap` is untrusted, run `brew trust kaki
 | ------------ | --- |
 | `matcha-app` | [Matcha](https://github.com/kakilangit/matcha), a regular expression workbench |
 | `shokirei`   | [Shokirei](https://github.com/kakilangit/shokirei), a screenshot beautifier |
+| `takara`     | [Takara](https://github.com/kakilangit/takara), an S3-compatible object browser, built for Garage |
 
 ## Notes
 
 The Matcha cask is named `matcha-app` because Homebrew already has an unrelated `matcha` formula.
 
-Matcha and Shokirei are not notarized by Apple yet. Their casks clear the macOS quarantine
+Matcha, Shokirei, and Takara are not notarized by Apple yet. Their casks clear the macOS quarantine
 flag after installing, so the apps open without a Gatekeeper prompt. `brew uninstall --zap`
 also removes what they keep: Matcha's saved pattern library, and Shokirei's saved styles,
-settings, and recent screenshots.
+settings, and recent screenshots, and Takara's saved connections list. Takara keeps
+connection secrets in the macOS Keychain, and uninstalling leaves them there.
 
 If macOS still says an app can't be opened (for example, after installing it from the
 `.dmg` instead of Homebrew), clear the quarantine flag yourself:
@@ -42,9 +45,10 @@ If macOS still says an app can't be opened (for example, after installing it fro
 ```sh
 xattr -cr /Applications/Matcha.app
 xattr -cr /Applications/Shokirei.app
+xattr -cr /Applications/Takara.app
 ```
 
-Every release of Matcha (from 0.1.5) and Shokirei (from 0.3.1) is signed with the same
+Every release of Matcha (from 0.1.5), Shokirei (from 0.3.1), and Takara is signed with the same
 certificate, so macOS recognizes an update as the same app and keeps what it allowed it.
 
 Shokirei asks for the Screen Recording permission the first time it captures, and updates keep
