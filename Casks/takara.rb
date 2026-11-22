@@ -1,6 +1,6 @@
 cask "takara" do
-  version "0.1.2"
-  sha256 "01ad5dcc8ea0be992600318d7a622baba8b9469a64e4cd56e133a0833f71479a"
+  version "0.2.0"
+  sha256 "7b777aec71d53d1cc0b66bc8b03f033ed86665b34379462fbc8690ad95a06c86"
 
   url "https://github.com/kakilangit/takara/releases/download/v#{version}/Takara-#{version}-universal.dmg"
   name "Takara"
